@@ -27,12 +27,6 @@ def _(n):
 
 @app.cell
 def _():
-    print("need a change")
-    return
-
-
-@app.cell
-def _():
 
     # Create an interactive slider
     n = mo.ui.slider(1, 100, value=50, label="Number of Fibonacci numbers")
