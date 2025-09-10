@@ -50,7 +50,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _():
-    mo.md(r"""## Random Usefull """)
+    mo.md(r"""## Random Usefull""")
     return
 
 
@@ -77,6 +77,54 @@ def _():
     print(f'{n:^20}')               # center align w/ 20 spaces; 
     print(f'{datetime.now(): %c}')  # Date formatting lots more optins available ..
     print(f'{n = }')                # Will output "n = ...." much nicer way to check vars
+    return
+
+
+@app.cell(hide_code=True)
+def _():
+    mo.md(r"""## VIM""")
+    return
+
+
+@app.cell(hide_code=True)
+def _():
+    mo.md(
+        r"""
+    usefull commands
+    ```
+    :set wrap
+    :set nowrap
+    :set textwidth=80
+    ```
+    """
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _():
+    mo.md(r"""## testing""")
+    return
+
+
+@app.cell
+def _():
+    mo.sidebar(
+        [
+            mo.md("# marimo"),
+            mo.nav_menu(
+                {
+                    "#/home": f"{mo.icon('lucide:home')} Home",
+                    "#/about": f"{mo.icon('lucide:user')} About",
+                    "#/contact": f"{mo.icon('lucide:phone')} Contact",
+                    "Links": {
+                        "https://github.com/deufel": "GitHub",
+                    },
+                },
+                orientation="vertical",
+            ),
+        ]
+    )
     return
 
 
