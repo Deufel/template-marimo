@@ -7,22 +7,23 @@ with app.setup:
     import marimo as mo
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _():
-    mo.md(r"""# Python Notes (archive)""")
+    mo.md(r"""# Python Notes""")
     return
 
 
 @app.cell(hide_code=True)
 def _():
-    mo.md(r"""## Virtual Enviorments""")
+    mo.md(r"""## Archive""")
     return
 
 
 @app.cell(hide_code=True)
 def _():
-    mo.md(
-        rf"""
+    mo.accordion(
+        {"venv": mo.md(
+            rf"""
     ```py
     python3 -m venv .venv                 # Create Virtual Enviorment
     source ./.venv/bin/activate           # Activate Virtual Enviorment
@@ -44,6 +45,7 @@ def _():
     rm -rf .venv                          # Delete virtual environment
     ```
     """
+        )}
     )
     return
 
@@ -54,9 +56,14 @@ def _():
     return
 
 
+@app.cell(hide_code=True)
+def _():
+    mo.md(r"""### Shuffle data""")
+    return
+
+
 @app.cell
 def _():
-    # Shuffle data
     import numpy as np
     data = np.array(['a', 'b', 'c', 'd', 'e'])
     indices = np.random.permutation(len(data))
@@ -67,9 +74,14 @@ def _():
     return
 
 
+@app.cell(hide_code=True)
+def _():
+    mo.md(r"""### F string tricks""")
+    return
+
+
 @app.cell
 def _():
-    # F-string tricks
     from datetime import datetime
     n = 345_320_000
     print(f'{n:,}')                 # 1,000s seperator with ',' (can also use _)
@@ -77,6 +89,31 @@ def _():
     print(f'{n:^20}')               # center align w/ 20 spaces; 
     print(f'{datetime.now(): %c}')  # Date formatting lots more optins available ..
     print(f'{n = }')                # Will output "n = ...." much nicer way to check vars
+    return
+
+
+@app.cell(hide_code=True)
+def _():
+    mo.md(
+        r"""
+    ### Concise breadth-first search
+    h/t JH
+    """
+    )
+    return
+
+
+@app.cell
+def _():
+    tree = {1: {2: {4: {}}, 3: {5: {}, 6: {}}}}
+
+    def bfs(q):
+        while q:
+            k,v = zip(*q)
+            print(*k)
+            q = [x for o in v for x in o.items()]
+
+    bfs(tree.items())
     return
 
 
