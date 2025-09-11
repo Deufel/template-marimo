@@ -4,23 +4,24 @@ __generated_with = "0.15.2"
 app = marimo.App(app_title="Mike's Python Notes")
 
 with app.setup:
-    import marimo as mo
+    # Initialization code that runs before all other cells
+    pass
 
 
 @app.cell
-def _():
+def _(mo):
     mo.md(r"""# Python Notes""")
     return
 
 
 @app.cell(hide_code=True)
-def _():
+def _(mo):
     mo.md(r"""## Archive""")
     return
 
 
 @app.cell(hide_code=True)
-def _():
+def _(mo):
     mo.accordion(
         {"venv": mo.md(
             rf"""
@@ -51,13 +52,13 @@ def _():
 
 
 @app.cell(hide_code=True)
-def _():
+def _(mo):
     mo.md(r"""## Random Usefull""")
     return
 
 
 @app.cell(hide_code=True)
-def _():
+def _(mo):
     mo.md(r"""### Shuffle data""")
     return
 
@@ -75,7 +76,7 @@ def _():
 
 
 @app.cell(hide_code=True)
-def _():
+def _(mo):
     mo.md(r"""### F string tricks""")
     return
 
@@ -93,7 +94,7 @@ def _():
 
 
 @app.cell(hide_code=True)
-def _():
+def _(mo):
     mo.md(
         r"""
     ### Concise breadth-first search
@@ -118,34 +119,46 @@ def _():
 
 
 @app.cell(hide_code=True)
-def _():
+def _(mo):
     mo.md(r"""## VIM""")
     return
 
 
-@app.cell(hide_code=True)
-def _():
-    mo.md(
-        r"""
-    usefull commands
-    ```
-    :set wrap
-    :set nowrap
-    :set textwidth=80
-    ```
-    """
+@app.cell
+def _(mo):
+    mo.vstack([
+        mo.accordion(
+            {"usefull commands": mo.md(
+                rf"""
+        ```lua
+        :set wrap
+        :set nowrap
+        :set textwidth=80
+        ```
+        """
+            )}
+        ),
+        mo.accordion(
+            {"rc": mo.md(
+                rf"""
+        ```lua
+        ...some simple rc file here... 
+        ```
+        """
+            )}
+        )]
     )
     return
 
 
 @app.cell(hide_code=True)
-def _():
+def _(mo):
     mo.md(r"""## testing""")
     return
 
 
 @app.cell
-def _():
+def _(mo):
     mo.sidebar(
         [
             mo.md("# marimo"),
